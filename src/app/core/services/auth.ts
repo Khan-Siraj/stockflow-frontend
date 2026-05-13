@@ -11,6 +11,18 @@ export class Auth {
   }
 
   signup(data: any) {
-    return this.http.post('http://localhost:3000/auth/signup', data);
+    return this.http.post('auth/signup', data);
+  }
+
+  storeToken(token: string) {
+    localStorage.setItem('token', token);
+  }
+
+  logout() {
+    localStorage.removeItem('token');
+  }
+
+  isLoggedIn() {
+    return !!localStorage.getItem('token');
   }
 }
